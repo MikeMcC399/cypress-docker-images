@@ -1,0 +1,26 @@
+name: test-docker-checkout
+on: workflow_dispatch
+jobs:
+  docker-base:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/base/tags
+    # currently cypress/base:18.16.0
+    container: cypress/base:latest
+    steps:
+      - uses: actions/checkout@v3
+
+  docker-browsers:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/browsers/tags
+    # currently cypress/browsers:node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
+    container: cypress/browsers:latest
+    steps:
+      - uses: actions/checkout@v3
+
+  docker-included:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/included/tags
+    # currently cypress/included:cypress-12.13.0-node-18.16.0-chrome-113.0.5672.92-1-ff-113.0-edge-113.0.1774.35-1
+    container: cypress/included:latest
+    steps:
+      - uses: actions/checkout@v3

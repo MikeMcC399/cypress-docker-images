@@ -1,0 +1,32 @@
+name: Test Docker GitHub Actions
+on: workflow_dispatch
+jobs:
+  docker-base:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/base/tags
+    container: cypress/base:latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          working-directory: examples/basic
+
+  docker-browsers:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/browsers/tags
+    container: cypress/browsers:latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          working-directory: examples/basic
+
+  docker-included:
+    runs-on: ubuntu-22.04
+    # from https://hub.docker.com/r/cypress/included/tags
+    container: cypress/included:latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cypress-io/github-action@v5
+        with:
+          working-directory: examples/basic-no-deps

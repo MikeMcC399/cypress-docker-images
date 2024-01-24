@@ -13,7 +13,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v1
+      - run: npm install bun --global
       - run: bun install --frozen-lockfile
       - run: bun cypress info
       - run: bun cypress run

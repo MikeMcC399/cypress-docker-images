@@ -13,10 +13,7 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          sudo apt-get install curl
-          curl -fsSL https://bun.sh/install
-          bash
+      - uses: oven-sh/setup-bun@v1
       - run: bun install --frozen-lockfile
       - run: bun cypress info
       - run: bun cypress run

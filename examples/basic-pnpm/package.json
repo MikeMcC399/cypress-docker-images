@@ -1,0 +1,12 @@
+{
+  "name": "example-basic-pnpm",
+  "version": "1.0.0",
+  "description": "basic example how to run Cypress tests",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "private": true,
+  "devDependencies": {
+    "cypress": "^13.8.1"
+  }
+}

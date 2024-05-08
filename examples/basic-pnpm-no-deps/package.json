@@ -1,0 +1,9 @@
+{
+  "name": "example-basic-pnpm-no-deps",
+  "version": "1.0.0",
+  "description": "basic example how to run Cypress tests",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "private": true
+}

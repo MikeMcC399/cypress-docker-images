@@ -1,0 +1,10 @@
+{
+  "name": "example-basic-no-deps",
+  "version": "1.0.1",
+  "description": "basic example how to run Cypress tests (Cypress not pre-installed)",
+    "scripts": {
+    "test": "cypress run"
+  },
+  "private": true,
+  "type": "module"
+}

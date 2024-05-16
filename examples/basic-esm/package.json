@@ -1,0 +1,13 @@
+{
+  "name": "example-basic-esm",
+  "version": "1.0.0",
+  "description": "basic example how to run Cypress tests",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "cypress": "^13.9.0"
+  }
+}

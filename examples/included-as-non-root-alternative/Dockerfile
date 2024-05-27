@@ -1,6 +1,6 @@
 # image has Cypress npm module installed globally in /root/.npm/node_modules
 # and Cypress binary cached in /root/.cache/Cypress folder
-FROM cypress/included:3.8.0
+FROM cypress/included:13.10.0
 
 # "root"
 RUN whoami

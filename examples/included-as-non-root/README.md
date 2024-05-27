@@ -5,9 +5,9 @@
 Whenever you run tests using `cypress/included:...` image, it runs as `root` user
 
 ```shell
-$ docker run -it -v $PWD/src:/test -w /test --entrypoint whoami cypress/included:3.8.0
+$ docker run -it -v $PWD/src:/test -w /test --entrypoint whoami cypress/included:13.10.0
 root
-$ docker run -it -v $PWD/src:/test -w /test cypress/included:3.8.0
+$ docker run -it -v $PWD/src:/test -w /test cypress/included:13.10.0
 ...
 ```
 
@@ -39,7 +39,7 @@ uid=0(root) gid=0(root) groups=0(root)
 If you try to run `cypress/included` image as another user, for example `node` you hit problems
 
 ```shell
-$ docker run -it -v $PWD/src:/test -w /test -u node cypress/included:3.8.0
+$ docker run -it -v $PWD/src:/test -w /test -u node cypress/included:13.10.0
 The cypress npm package is installed, but the Cypress binary is missing.
 
 We expected the binary to be installed here: /home/node/.cache/Cypress/3.8.0/Cypress/Cypress
@@ -48,7 +48,7 @@ We expected the binary to be installed here: /home/node/.cache/Cypress/3.8.0/Cyp
 You can see the user id when running as `-u node` by opening shell
 
 ```shell
-$ docker run -it -v $PWD/src:/test -w /test -u node --entrypoint /bin/sh cypress/included:3.8.0
+$ docker run -it -v $PWD/src:/test -w /test -u node --entrypoint /bin/sh cypress/included:13.10.0
 $ id
 uid=1000(node) gid=1000(node) groups=1000(node)
 ```
@@ -58,7 +58,7 @@ uid=1000(node) gid=1000(node) groups=1000(node)
 You need to build your own Docker image on top of the desired `cypress/included:...` image where you change the user. Before changing from `root` to `node` you need to move the cache folder though - to give `node` user access to it. See [Dockerfile](Dockerfile) in the current folder.
 
 ```Dockerfile
-FROM cypress/included:3.8.0
+FROM cypress/included:13.10.0
 
 # "root"
 RUN whoami

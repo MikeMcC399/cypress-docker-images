@@ -7,12 +7,16 @@
 This image should be enough to run Cypress tests headlessly or in the interactive mode with a single Docker command like this:
 
 ```shell
-$ docker run -it -v $PWD:/e2e -w /e2e cypress/included:13.10.0
+docker run -it -v $PWD:/e2e -w /e2e cypress/included:13.10.0
 ```
 
 ## Debug
 
 If you want to see the [Cypress debug logs](https://on.cypress.io/debugging#Print-DEBUG-logs) during the run, pass environment variable `DEBUG`:
+
+```shell
+docker run -it -v $PWD:/e2e -w /e2e -e DEBUG=cypress:* cypress/included:13.10.0
+```
 
 ```text
 $ docker run -it -v $PWD:/e2e -w /e2e -e DEBUG=cypress:* cypress/included:13.10.0
@@ -27,18 +31,23 @@ $ docker run -it -v $PWD:/e2e -w /e2e -e DEBUG=cypress:* cypress/included:13.10.
 These images have their entry point set to `cypress run` without any additional arguments. You can specify additional Cypress CLI arguments after the image name. For example to print the Help menu for the `cypress run` command:
 
 ```shell
-$ docker run -it --entrypoint=cypress cypress/included:13.10.0 run --help
+docker run -it --entrypoint=cypress cypress/included:13.10.0 run --help
 ```
 
 To run a single spec using Chrome browser:
 
 ```shell
-$ docker run -it --entrypoint=cypress cypress/included:13.10.0 run --spec cypress/e2e/spec-a.cy.js --browser chrome
+docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:13.10.0 \
+run --spec cypress/e2e/spec-a.cy.js --browser chrome
 ```
 
 ## Entry
 
 These images have their entry point set to `cypress run`. If you want to run a different command, you need to set `--entrypoint=cypress` and specify arguments AFTER the image name. For example, to print the Cypress information using `cypress info` command
+
+```shell
+docker run -it --entrypoint=cypress cypress/included:13.10.0 info
+```
 
 ```text
 $ docker run -it --entrypoint=cypress cypress/included:13.10.0 info
@@ -93,7 +102,8 @@ System Memory: 5.16 GB free 4.09 GB
 If you want to provide Cypress command line arguments, specify the entry point and the arguments. For example to run tests with recording and parallel mode using custom build ID "abc123" we can use:
 
 ```shell
-$ docker run -it --entrypoint=cypress cypress/included:13.10.0   run --record --parallel --ci-build-id abc123
+docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:13.10.0 \
+run --record --parallel --ci-build-id abc123
 ```
 
 ## Keep the container
@@ -101,6 +111,10 @@ $ docker run -it --entrypoint=cypress cypress/included:13.10.0   run --record --
 Every time you run `docker run` you spawn a new container. That container then stops after the tests finish, but there is nothing Cypress can do about it - it is the Docker command `docker run ...` that controls this behavior.
 
 If you are running a lot of tests again and again, you might start the container once using Bash as the entrypoint, instead of the default `cypress` command. Then you can execute the `cypress run` or any other commands, while still in the same container:
+
+```shell
+docker run -it -v $PWD:/e2e -w /e2e --entrypoint=/bin/bash cypress/included:13.10.0
+```
 
 ```text
 $ docker run -it -v $PWD:/e2e -w /e2e --entrypoint=/bin/bash cypress/included:13.10.0
@@ -115,6 +129,10 @@ root@814ed01841fe:/e2e# cypress run
 ## Browser
 
 If you want to use a different browser (assuming it is installed in the container) use:
+
+```shell
+docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:13.10.0 run --browser chrome
+```
 
 ```text
 $ docker run -it -v $PWD:/e2e -w /e2e --entrypoint=cypress cypress/included:13.10.0 run --browser chrome
@@ -141,7 +159,7 @@ DevTools listening on ws://127.0.0.1:45315/devtools/browser/0c510bb9-b365-49e7-8
 By default, the included images run as `root` user. You can switch the user to the second user in the image `node` or custom-mapped user, see [examples section](https://github.com/cypress-io/cypress-docker-images#examples). Starting with `cypress/included:3.8.1` we set permissions on the globally installed Cypress and set binary cache variable to allow other users read and execute access. Thus you will be able to run Cypress as non-root user by using `-u node`
 
 ```shell
-$ docker run -it -v $PWD/src:/test -w /test -u node cypress/included:13.10.0
+docker run -it -v $PWD/src:/test -w /test -u node cypress/included:13.10.0
 ```
 
 ## GitHub Action
@@ -156,7 +174,7 @@ If you want to run Cypress after a server has started, we suggest using [wait-on
 # execute the Cypress container once
 docker run --rm  # remove container after finish
   -v ./e2e:/e2e  # map current folder to "e2e" folder
-  --workdir=/e2e   --entrypoint=""  # remove default entrypoint command
+  --workdir=/e2e --entrypoint=""  # remove default entrypoint command
   cypress/included:13.10.0   # wait for the local site to respond
   # then run Cypress tests
   /bin/bash -c 'npx wait-on http://127.0.0.1:3000 && cypress run'
@@ -164,8 +182,8 @@ docker run --rm  # remove container after finish
 
 ## Restrict CPU
 
-If you want to simulate slow container, run the Docker container with `--cpus` parameter, for example, let's debug the browser detection problems when the CPU is (very) slow:
+If you want to simulate a slow container, run the Docker container with `--cpus` parameter, for example, let's debug the browser detection problems when the CPU is (very) slow:
 
 ```shell
-docker run -it -v $PWD:/e2e -w /e2e --cpus=0.02   -e DEBUG=cypress:launcher --entrypoint=cypress   cypress/included:13.10.0 info
+docker run -it -v $PWD:/e2e -w /e2e --cpus=0.02   -e DEBUG=cypress:launcher --entrypoint=cypress cypress/included:13.10.0 info
 ```

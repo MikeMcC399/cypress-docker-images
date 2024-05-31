@@ -144,18 +144,17 @@ By default, `cypress/included` images run as `root` user. You can switch to the 
 
 You can quickly run your tests in GitHub Actions using these images, see [GitHub Action example](https://github.com/cypress-io/github-action#docker-image) repository.
 
-## Wait-on
+## Run script
 
-If you want to run Cypress after a server has started, we suggest using [wait-on](https://github.com/jeffbski/wait-on#readme) utility. To use it from the `cypress/included` image, you need to disable the default entrypoint and set a new command like this:
+If you want to run Cypress using an npm script you can replace the `cypress` Docker entrypoint with a `bash` entrypoint followed by the `npm run script` command.
+
+Using the Cypress example repository [cypress-io/cypress-example-kitchensink](https://github.com/cypress-io/cypress-example-kitchensink) we can call the repository's script `local:run`. This script initiates `npm start` (to start a local http server), waits for the server to become available, and then runs all Cypress test specs with `cypress run`.
 
 ```shell
-# execute the Cypress container once
-docker run --rm  # remove container after finish
-  -v ./e2e:/e2e  # map current folder to "e2e" folder
-  --workdir=/e2e   --entrypoint=""  # remove default entrypoint command
-  cypress/included:13.10.0   # wait for the local site to respond
-  # then run Cypress tests
-  /bin/bash -c 'npx wait-on http://127.0.0.1:3000 && cypress run'
+git clone https://github.com/cypress-io/cypress-example-kitchensink
+cd cypress-example-kitchensink
+npm ci
+docker run -it -v $PWD:/e2e -w /e2e --entrypoint bash cypress/included:13.10.0 -c 'npm run local:run'
 ```
 
 ## Restrict CPU

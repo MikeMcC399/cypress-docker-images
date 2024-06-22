@@ -30,6 +30,10 @@ jobs:
           # Only the Electron browser is available with cypress/base
           # This is the default browser and does not need to be specified
           working-directory: examples/basic
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-base
+          path: examples/basic/cypress/screenshots
 
   docker-browsers:
     runs-on: ubuntu-22.04
@@ -51,6 +55,10 @@ jobs:
         with:
           working-directory: examples/basic
           browser: ${{ matrix.browser }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-browsers-${{ matrix.browser }}
+          path: examples/basic/cypress/screenshots
 
   docker-included:
     runs-on: ubuntu-22.04
@@ -79,3 +87,7 @@ jobs:
           # which can cause errors with non-root user
           # see https://on.cypress.io/guides/references/advanced-installation#Skipping-installation
           CYPRESS_INSTALL_BINARY: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-included-${{ matrix.browser }}
+          path: examples/basic-mini/cypress/screenshots

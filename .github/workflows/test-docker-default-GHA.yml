@@ -56,5 +56,5 @@ jobs:
       - uses: cypress-io/github-action@v6
         with:
           build: npx cypress info
-          working-directory: examples/basic-no-deps
+          working-directory: examples/basic-mini
           browser: ${{ matrix.browser }}

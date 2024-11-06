@@ -45,7 +45,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: examples/basic-no-deps
+        working-directory: examples/basic-mini
     strategy:
       fail-fast: false
       matrix:

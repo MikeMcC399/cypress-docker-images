@@ -4,7 +4,7 @@ name: Example Tests
 on:
   push:
     paths:
-      - examples/**
+      - examples/**s
   pull_request:
   workflow_dispatch:
 

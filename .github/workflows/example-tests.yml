@@ -1,13 +1,11 @@
 name: Example Tests
 # This workflow tests examples from the examples directory of this repo.
 
-# The workflow is triggered when a change is made to the examples or
-# manually on demand.
-
 on:
   push:
     paths:
       - examples/**
+  pull_request:
   workflow_dispatch:
 
 jobs:

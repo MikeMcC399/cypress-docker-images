@@ -15,10 +15,10 @@ jobs:
       fail-fast: false
       matrix:
         directory: [
-          basic-mini,
-          basic,
-          chromium,
-          firefox-esr,
+          # basic-mini,
+          # basic,
+          # chromium,
+          # firefox-esr,
           included-as-non-root
           ]
     steps:

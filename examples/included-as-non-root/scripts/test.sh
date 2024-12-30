@@ -6,7 +6,10 @@ set -e # fail on error
 
 
 if [ "$GITHUB_ACTIONS" = "true" ]; then
-    export DOCKER_USER=1001 # GitHub runner non-root user
+    id
+    stat .
+    ls -al
+    export DOCKER_USER=node # GitHub runner non-root user
 else
     export DOCKER_USER=node # Cypress Docker image non-root user
 fi

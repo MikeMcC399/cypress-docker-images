@@ -8,6 +8,7 @@ set -e # fail on error
 if [ "$GITHUB_ACTIONS" = "true" ]; then
     id
     stat .
+    mkdir --mode=777 cypress/screenshots cypress/videos
     ls -al
     export DOCKER_USER=node # GitHub runner non-root user
 else

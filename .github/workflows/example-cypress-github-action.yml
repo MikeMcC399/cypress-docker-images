@@ -25,6 +25,11 @@ jobs:
       options: --user 1001
     steps:
       - uses: actions/checkout@v4
+      - name: Permissions infos
+        run: |
+          echo "Current id: $(id))"
+          echo "HOME directory: $(ls -al $HOME)"
+          echo "Directory examples/basic: $(ls -al examples/basic)"
       - uses: cypress-io/github-action@v6
         with:
           # Only the Electron browser is available with cypress/base

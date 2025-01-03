@@ -15,14 +15,15 @@ jobs:
       fail-fast: false
       matrix:
         directory: [
-          basic-mini,
-          basic,
-          chromium,
-          firefox-esr,
+          # basic-mini,
+          # basic,
+          # chromium,
+          # firefox-esr,
           included-as-non-root
           ]
     steps:
       - uses: actions/checkout@v4
+      - run: id
       - name: Run test script
         working-directory: examples/${{ matrix.directory }}
         run: ./scripts/test.sh

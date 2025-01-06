@@ -10,7 +10,7 @@ jobs:
         working-directory: examples/basic
     container:
       image: cypress/base:latest
-      options: --user 1001
+      options: --user 1002
     steps:
       - uses: actions/checkout@v4
       - run: node -v
@@ -31,7 +31,7 @@ jobs:
     # from https://hub.docker.com/r/cypress/browsers/tags
     container:
       image: cypress/browsers:latest
-      options: --user 1001
+      options: --user 1002
     steps:
       - uses: actions/checkout@v4
       - run: node -v
@@ -52,7 +52,7 @@ jobs:
         browser: [chrome, edge, electron, firefox]
     container:
       image: cypress/included:latest
-      options: --user 1001
+      options: --user 1002
     steps:
       - uses: actions/checkout@v4
       - run: node -v

@@ -16,8 +16,11 @@ namedExamplesAmd64=(
 
 # These examples are compatible with arm64 architecture
 namedExamplesArm64=(
+    'basic'
+    'basic-mini'
     'chromium'
     'firefox-esr'
+    'included-as-non-root'
     )
 
 if [ "$(uname -m)" = "x86_64" ]; then

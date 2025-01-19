@@ -13,10 +13,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [
-          ubuntu-24.04,
-          ubuntu-24.04-arm
-          ]
         directory: [
           basic-mini,
           basic,
@@ -24,6 +20,10 @@ jobs:
           chromium,
           firefox-esr,
           included-as-non-root
+          ]
+        os: [
+          ubuntu-24.04,
+          ubuntu-24.04-arm
           ]
         exclude:
           - os: ubuntu-24.04-arm

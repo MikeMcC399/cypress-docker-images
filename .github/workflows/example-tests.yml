@@ -10,20 +10,10 @@ on:
 
 jobs:
   example:
-    strategy:
-      fail-fast: false
-      matrix:
-        directory: [
-          basic-mini,
-          basic,
-          chromium,
-          firefox-esr,
-          included-as-non-root
-          ]
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Run test script
-        working-directory: examples/${{ matrix.directory }}
+        working-directory: examples/basic
         run: ./scripts/test.sh

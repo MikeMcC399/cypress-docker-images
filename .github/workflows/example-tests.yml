@@ -35,6 +35,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - run: docker -v
       - name: Run test script
         working-directory: examples/${{ matrix.directory }}
         run: ./scripts/test.sh

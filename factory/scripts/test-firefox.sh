@@ -7,8 +7,9 @@ ARCHITECTURE=$(uname -m)
 echo Running on $ARCHITECTURE
 
 echo Test Firefox
-echo Build Factory
-docker compose build factory
+# echo Build Factory
+# docker compose build factory
+docker pull cypress/factory
 cd test-project
 set -a && . ../.env && set +a
 

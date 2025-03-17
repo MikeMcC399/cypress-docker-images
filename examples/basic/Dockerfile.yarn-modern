@@ -1,0 +1,8 @@
+ARG YARN_VERSION='4.7.0'
+
+FROM cypress/factory
+
+COPY . /opt/app
+WORKDIR /opt/app
+RUN npm install cypress --save-dev
+RUN npx cypress install

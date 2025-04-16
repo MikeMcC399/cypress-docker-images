@@ -2,7 +2,7 @@ name: Test Docker GitHub Actions pnpm
 on: workflow_dispatch
 jobs:
   docker-base:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -38,7 +38,7 @@ jobs:
           browser: ${{ matrix.browser }}
 
   docker-browsers:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -73,7 +73,7 @@ jobs:
           browser: ${{ matrix.browser }}
 
   docker-included:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:

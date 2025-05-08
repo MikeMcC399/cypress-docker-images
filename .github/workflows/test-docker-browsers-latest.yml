@@ -24,4 +24,4 @@ jobs:
       - run: npx cypress info
       - run: npx cypress run --browser ${{ matrix.browser }}
         env:
-          DEBUG: 'cypress:*'
+          DEBUG: 'cypress:server:browsers:firefox'

@@ -12,9 +12,10 @@ jobs:
       fail-fast: false
       matrix:
         browser: [firefox]
+        node: ['22.14.0', '22.15.0']
     # from https://hub.docker.com/r/cypress/browsers/tags
     container:
-      image: cypress/browsers:latest
+      image: cypress/browsers:${{ matrix.node }}
       options: --user 1001
     steps:
       - uses: actions/checkout@v4

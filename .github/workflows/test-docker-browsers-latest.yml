@@ -23,3 +23,5 @@ jobs:
       - run: npm ci
       - run: npx cypress info
       - run: npx cypress run --browser ${{ matrix.browser }}
+        env:
+          DEBUG: 'cypress:*'

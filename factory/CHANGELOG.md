@@ -1,5 +1,9 @@
 # Change log
 
+## 5.9.0
+
+- Added ability to install geckodriver with `GECKODRIVER_VERSION`. Addresses [#1351](https://github.com/cypress-io/cypress-docker-images/issues/1351).
+
 ## 5.8.3
 
 - Updated default node version from `22.15.0` to `22.15.1`. Addressed in [#1350](https://github.com/cypress-io/cypress-docker-images/pull/1350).

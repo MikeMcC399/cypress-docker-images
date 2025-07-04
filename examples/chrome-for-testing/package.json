@@ -10,6 +10,6 @@
   "private": true,
   "devDependencies": {
     "@puppeteer/browsers": "^2.10.5",
-    "cypress": "^14.4.0"
+    "cypress": "https://cdn.cypress.io/beta/npm/15.0.0/linux-x64/release/15.0.0-a58a19eb3a0e7a99a8e5b29e656529f27d62f5de/cypress.tgz"
   }
 }

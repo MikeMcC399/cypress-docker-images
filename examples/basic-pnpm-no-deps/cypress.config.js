@@ -4,7 +4,6 @@ module.exports = defineConfig({
   video: false,
   fixturesFolder: false,
   e2e: {
-    setupNodeEvents(on, config) {},
     supportFile: false,
   },
 })

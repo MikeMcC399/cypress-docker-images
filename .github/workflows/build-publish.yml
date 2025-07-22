@@ -24,13 +24,19 @@ jobs:
       - run: npm run lint
       - run: npm run format:check
 
-  # check-factory-versions:
-  #   runs-on: ubuntu-24.04
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Load .env
-  #       run: echo "set -a && . ./factory/.env && set +a" >> $GITHUB_ENV
-  #     - name: Build Docker image
+  check-factory-versions:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load .env
+        run: |
+          set -a
+          grep -v '^\s*#' ./factory/.env | grep -v '^\s*$' >> $GITHUB_ENV
+          set +a
+      - name: Show environment variables
+        run: echo $GITHUB_ENV
+
+      # - name: Build Docker image
   #       run: docker compose --progress plain build factory
   #       working-directory: factory
   #     - name: Build test image

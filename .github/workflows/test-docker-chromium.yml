@@ -1,7 +1,6 @@
 name: Test Docker Chromium
 on: workflow_dispatch
 jobs:
-
   docker-chromium:
     runs-on: ubuntu-24.04
     defaults:

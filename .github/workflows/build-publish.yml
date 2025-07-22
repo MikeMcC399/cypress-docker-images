@@ -31,7 +31,17 @@ jobs:
       - name: Load .env
         run: |
           set -a
-          grep -v '^\s*#' ./factory/.env | grep -v '^\s*$' >> $GITHUB_ENV
+          while IFS='=' read -r key val; do
+            # skip empty lines and comments
+            [[ "$key" =~ ^\s*# ]] && continue
+            [[ -z "$key" || -z "$val" ]] && continue
+            # remove surrounding quotes (single or double)
+            val="${val%\"}"
+            val="${val#\"}"
+            val="${val%\'}"
+            val="${val#\'}"
+            echo "${key}=${val}" >> $GITHUB_ENV
+          done < <(grep -v '^\s*#' ./factory/.env | grep -v '^\s*$')
           set +a
       - name: Show environment variables
         run: |

@@ -1,7 +1,6 @@
 name: Test Docker browsers latest
 on: workflow_dispatch
 jobs:
-
   docker-browsers:
     runs-on: ubuntu-24.04
     defaults:

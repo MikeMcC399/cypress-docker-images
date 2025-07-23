@@ -40,22 +40,22 @@ jobs:
       - name: Build Docker image
         run: docker compose --progress plain build factory
         working-directory: factory
-      # - name: Build test image
-      #   run: docker compose --progress plain build test-factory-all-included
-      #   working-directory: factory/test-project
-      # - name: Check versions
-      #   run: |
-      #     set -e
-      #     echo "Checking Node, Yarn, Chrome, Firefox, Edge, Cypress, Git, SSH versions..."
-      #     docker compose run --rm test-factory-all-included node -v
-      #     docker compose run --rm test-factory-all-included yarn -v
-      #     docker compose run --rm test-factory-all-included google-chrome --version
-      #     docker compose run --rm test-factory-all-included firefox --version
-      #     docker compose run --rm test-factory-all-included edge --version
-      #     docker compose run --rm test-factory-all-included cypress -v
-      #     docker compose run --rm test-factory-all-included git --version
-      #     docker compose run --rm test-factory-all-included ssh -V
-      #   working-directory: factory/test-project
+      - name: Build test image
+        run: docker compose --progress plain build test-factory-all-included
+        working-directory: factory/test-project
+      - name: Check versions
+        run: |
+          set -e
+          echo "Checking Node, Yarn, Chrome, Firefox, Edge, Cypress, Git, SSH versions..."
+          docker compose run --rm test-factory-all-included node -v
+          docker compose run --rm test-factory-all-included yarn -v
+          docker compose run --rm test-factory-all-included google-chrome --version
+          docker compose run --rm test-factory-all-included firefox --version
+          docker compose run --rm test-factory-all-included edge --version
+          docker compose run --rm test-factory-all-included cypress -v
+          docker compose run --rm test-factory-all-included git --version
+          docker compose run --rm test-factory-all-included ssh -V
+        working-directory: factory/test-project
 
   # test-image:
   #   runs-on: ${{ matrix.os }}

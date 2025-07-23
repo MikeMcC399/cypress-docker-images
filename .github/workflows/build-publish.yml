@@ -37,9 +37,9 @@ jobs:
           echo BASE_IMAGE $BASE_IMAGE
           echo BASE_IMAGE_TAG $BASE_IMAGE_TAG
 
-      # - name: Build Docker image
-      #   run: docker compose --progress plain build factory
-      #   working-directory: factory
+      - name: Build Docker image
+        run: docker compose --progress plain build factory
+        working-directory: factory
       # - name: Build test image
       #   run: docker compose --progress plain build test-factory-all-included
       #   working-directory: factory/test-project

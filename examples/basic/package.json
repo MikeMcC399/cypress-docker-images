@@ -7,6 +7,6 @@
   },
   "private": true,
   "devDependencies": {
-    "cypress": "^14.4.0"
+    "cypress": "https://cdn.cypress.io/beta/npm/15.0.0/linux-arm64/develop-6db5cb19350db11fe615dfc17a07d09b46a4d8d1/cypress.tgz"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "example-webkit",
+  "version": "1.0.0",
+  "description": "Basic E2E Cypress test example with WebKit",
+  "scripts": {
+    "test": "cypress run",
+    "e2e": "cypress run",
+    "e2e:webkit": "cypress run --browser webkit"
+  },
+  "private": true,
+  "devDependencies": {
+    "cypress": "^15.5.0",
+    "playwright-webkit": "^1.56.1"
+  }
+}

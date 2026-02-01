@@ -1,5 +1,11 @@
 # Change log
 
+## 7.3.0
+
+- Yarn v1 Classic was [frozen](https://github.com/yarnpkg/yarn) in January 2020 with no further support or plans for new releases.
+  Use of the parameter `YARN_VERSION` to include Yarn v1 Classic in custom Docker images built with `cypress/factory` is deprecated and support will be removed in a future release.
+  Addressed in [#xxxx](https://github.com/cypress-io/cypress-docker-images/pull/xxxx).
+
 ## 7.2.2
 
 - Updated Yarn v1 Classic PGP signing key retrieval to avoid failure. Addresses [#1469](https://github.com/cypress-io/cypress-docker-images/pull/1469).

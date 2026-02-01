@@ -85,6 +85,10 @@ ONBUILD RUN bash /opt/installScripts/node/install-node-version.sh ${APPLIED_FACT
 # Install Yarn: Optional
 ONBUILD ARG YARN_VERSION
 
+# DEPRECATED: Yarn v1 Classic is deprecated and will be removed in a future release.
+ONBUILD ENV YARN_DEPRECATION=${YARN_VERSION:+'**Yarn v1 Classic is DEPRECATED and build support will be removed in a future release.**'}
+ONBUILD RUN echo ${YARN_DEPRECATION}
+
 # Installed using a node script to handle conditionals since we all know javascript
 ONBUILD RUN node /opt/installScripts/yarn/install-yarn-version.js ${YARN_VERSION}
 

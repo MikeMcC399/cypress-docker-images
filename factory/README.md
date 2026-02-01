@@ -3,7 +3,7 @@
 [`cypress/factory`](https://hub.docker.com/r/cypress/factory) is a Docker image that can be used with [`ARG`](https://docs.docker.com/reference/dockerfile/#arg) instructions in a custom-built [`Dockerfile`](https://docs.docker.com/reference/dockerfile/) to generate a new Docker image with specific versions of:
 
 - Node.js
-- Yarn v1 Classic
+- Yarn v1 Classic (deprecated)
 - Chrome
 - Chrome for Testing
 - Firefox
@@ -58,6 +58,9 @@ Example: `YARN_VERSION='1.22.22'`
 
 [Yarn Modern](https://yarnpkg.com/) (versions 2 and above) are not supported.
 They are not currently published to the npm registry and require the experimental [Corepack](https://yarnpkg.com/corepack) to [install](https://yarnpkg.com/getting-started/install).
+
+*Use of `YARN_VERSION` to add Yarn v1 Classic to Cypress Docker images is deprecated.
+Support will be removed in a future `cypress/factory` release.*
 
 ### CYPRESS_VERSION
 

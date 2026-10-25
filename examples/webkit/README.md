@@ -61,7 +61,7 @@ We build the new image, run the container from the image and execute the Cypress
 cd examples/webkit             # Use a pre-configured simple Cypress E2E project
 npm ci                         # Install all dependencies s
 docker build -t test-webkit .  # Build a new image
-docker run -it --rm --entrypoint bash test-webkit -c "npx cypress run --browser webkit" # Run Cypress test using WebKit
+docker run --rm --entrypoint bash test-webkit -c "npx cypress run --browser webkit" # Run Cypress test using WebKit
 ```
 
 ## Reference

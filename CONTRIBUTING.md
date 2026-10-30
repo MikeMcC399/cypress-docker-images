@@ -65,7 +65,6 @@ To publish a new image for `factory`, `base`, `browsers`, or `included`, open a 
 
 - `BASE_IMAGE`
 - `FACTORY_DEFAULT_NODE_VERSION`
-- `YARN_VERSION`
 
 You should not change the `FACTORY_VERSION` or make an entry into the factory [CHANGELOG](./factory/CHANGELOG.md) if you are only changing browser versions, geckodriver version or the Cypress version.
 
@@ -177,7 +176,6 @@ It is a good idea to print versions of the installed tools and username at the e
 # versions of local tools
 RUN echo  " node version:    $(node -v) \n" \
   "npm version:     $(npm -v) \n" \
-  "yarn version:    $(yarn -v) \n" \
   "typescript version:  $(tsc -v) \n" \
   "debian version:  $(cat /etc/debian_version) \n" \
   "user:            $(whoami) \n"

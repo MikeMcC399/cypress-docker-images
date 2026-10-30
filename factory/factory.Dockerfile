@@ -82,12 +82,6 @@ ONBUILD ENV APPLIED_FACTORY_DEFAULT_NODE_VERSION=${NODE_VERSION:-${CYPRESS_FACTO
 # Node is installed via a bash script because node isn't installed yet!
 ONBUILD RUN bash /opt/installScripts/node/install-node-version.sh ${APPLIED_FACTORY_DEFAULT_NODE_VERSION}
 
-# Install Yarn: Optional
-ONBUILD ARG YARN_VERSION
-
-# Installed using a node script to handle conditionals since we all know javascript
-ONBUILD RUN node /opt/installScripts/yarn/install-yarn-version.js ${YARN_VERSION}
-
 # Install Chrome: optional
 ONBUILD ARG CHROME_VERSION
 

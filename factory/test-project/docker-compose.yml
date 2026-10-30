@@ -131,7 +131,6 @@ services:
     build:
       args:
         NODE_VERSION: ${NODE_VERSION}
-        YARN_VERSION: ${YARN_VERSION:-}
         CYPRESS_VERSION: ${CYPRESS_VERSION}
         CHROME_VERSION: ${CHROME_VERSION}
         FIREFOX_VERSION: ${FIREFOX_VERSION}

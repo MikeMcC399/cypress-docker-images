@@ -20,7 +20,7 @@ When you flag an unchanged browser pin, name each variable and point to the sour
 
 ## Version pin rules
 
-- [ ] **No FACTORY_VERSION bump for version-only changes**: Changing browser versions, `GECKODRIVER_VERSION`, or `CYPRESS_VERSION` must not bump `FACTORY_VERSION` or add a factory CHANGELOG entry. Those are reserved for changes to `BASE_IMAGE`, `FACTORY_DEFAULT_NODE_VERSION`, `YARN_VERSION`, `factory.Dockerfile`, or `installScripts`.
+- [ ] **No FACTORY_VERSION bump for version-only changes**: Changing browser versions, `GECKODRIVER_VERSION`, or `CYPRESS_VERSION` must not bump `FACTORY_VERSION` or add a factory CHANGELOG entry. Those are reserved for changes to `BASE_IMAGE`, `FACTORY_DEFAULT_NODE_VERSION`, `factory.Dockerfile`, or `installScripts`.
 - [ ] **FACTORY_VERSION bump when required**: Conversely, a change to any of those factory inputs must bump `FACTORY_VERSION` and add an entry to the factory CHANGELOG.
 - [ ] **Downgrades explained**: `factory/.env` on `master` holds the latest stable versions, so a PR that lowers any version pin should say why (for example, rolling back a broken browser release). Flag a downgrade with no stated reason.
 - [ ] **Platform notes respected**: Each pin's comment lists which platforms it supports (for example, Edge is Linux/amd64 only). Flag changes that contradict those notes.

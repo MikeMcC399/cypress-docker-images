@@ -35,6 +35,8 @@ In the case of Windows environments, see [Docker Desktop for Windows](https://do
 - [corepack](https://github.com/nodejs/corepack) through Node.js - dropped in Node.js 25 and above.
   To update the bundled version, or to install, use `npm install -g corepack@<version>`.
 - [Yarn v1 Classic](https://github.com/yarnpkg/yarn) installed globally with npm - dropped in Node.js 26 and above
+  For remaining legacy requirements, refer to the unsupported documentation
+  [Yarn v1 installation](https://classic.yarnpkg.com/en/docs/install).
 
 ## Browsers
 

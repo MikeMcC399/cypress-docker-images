@@ -1,5 +1,10 @@
 # Change log
 
+## 10.0.0
+
+- Removed the capability to bundle Yarn v1 Classic using `YARN_VERSION` from `cypress/factory`.
+  Addresses [#1500](https://github.com/cypress-io/cypress-docker-images/issues/1500).
+
 ## 9.0.0
 
 - Updated `FACTORY_DEFAULT_NODE_VERSION` from `24.22.1` (`Krypton` - Maintenance LTS)
